@@ -1,0 +1,34 @@
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+require("dotenv").config();
+
+const authRoutes = require("./routes/authRoutes");
+const imageRoutes = require("./routes/imageRoutes");
+const userRoutes = require("./routes/userRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
+
+const PORT = process.env.PORT;
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+app.use("/images", express.static(path.join(__dirname, "images/")));
+
+app.use("/auth", authRoutes);
+app.use("/users/", userRoutes);
+app.use("/categories/", categoryRoutes);
+app.use("/transactions/", transactionRoutes);
+
+app.use("/api/image", imageRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Welcome Income and Expense API.");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server turned on ${PORT}`);
+});
