@@ -1,11 +1,11 @@
 const { sql } = require("../config/pgDb");
 
 const getAllTransaction = async (req, res) => {
-  const { userId } = req.params;
+  const { user_id } = req.params;
   try {
     const transactions = await sql`
       SELECT tr.name, tr.amount, tr.createdAt, tr.id, tr.transaction_type, ct.name, ct.color FROM transaction tr 
-      INNER JOIN category ct ON tr.category_id=ct.id WHERE tr.user_id=${userId} ORDER BY createdAt DESC`;
+      INNER JOIN category ct ON tr.category_id=ct.id WHERE tr.user_id=${user_id} ORDER BY createdAt DESC`;
     res.status(201).json({ message: "success", transactions });
   } catch (error) {
     console.log("ERR", error);
@@ -30,7 +30,7 @@ const createTransaction = async (req, res) => {
 
 const getBarGraphData = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { user_id } = req.params;
     const barGraphData = await sql`
       SELECT
         EXTRACT(YEAR FROM updatedAt) AS year,
@@ -52,7 +52,7 @@ const getBarGraphData = async (req, res) => {
 
 const getTotalIncomeExpense = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { user_id } = req.body;
     console.log("USER===>");
     const data =
       await sql`SELECT transaction_type, SUM(amount) as total FROM transaction GROUP BY transaction_type`;

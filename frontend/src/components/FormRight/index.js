@@ -9,7 +9,7 @@ const FormRigth = () => {
       <h1 className="my-1">Name</h1>
       <input
         type="text"
-        name="transaction_name"
+        name="name"
         value={transactionData.name}
         onChange={(e) => {
           changeTransactionData(e.target.name, e.target.value);

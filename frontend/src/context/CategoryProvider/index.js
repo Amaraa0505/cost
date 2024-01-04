@@ -39,7 +39,7 @@ const CategoryProvider = ({ children }) => {
     try {
       const { data } = await myAxios.post("/categories", {
         ...categoryData,
-        userId: "06abd39d-0523-4749-b99e-28dc147ad222",
+        userId: user.id,
       });
 
       setReFetch(!reFetch);

@@ -9,12 +9,11 @@ export const TransactionContext = createContext(null);
 const TransactionProvider = ({ children }) => {
   const { user } = useContext(UserContext);
   const [transactionData, setTransactionData] = useState({
-    name: "buuz",
-    amount: 1000,
-    transaction_type: "EXP",
+    name: "",
+    amount: 100,
+    transaction_type: "",
     category_id: "",
     updatedat: "",
-    user_id: "9f58c108-63b9-482e-9ef8-54bb33c2994a",
   });
 
   const [transactions, setTransactions] = useState([]);
@@ -31,7 +30,7 @@ const TransactionProvider = ({ children }) => {
     try {
       const { data } = await myAxios.post("/transactions", {
         ...transactionData,
-        user_id: "2b7d99a2-e325-4b86-aff0-69c16cfaf902",
+        user_id: user.id,
       });
       console.log("FF");
       setReFetch(!reFetch);
@@ -41,24 +40,22 @@ const TransactionProvider = ({ children }) => {
     }
   };
 
-  const getTransactions = async () => {
-    console.log("working");
-    try {
-      const {
-        data: { transactions },
-      } = await myAxios.get(
-        "/transactions/06abd39d-0523-4749-b99e-28dc147ad222"
-      );
-      toast.success("Гүйлгээнүүдийг амжилттай татлаа.");
-      setTransactions(transactions);
-    } catch (error) {
-      toast.error("TTT guilgee nemhed aldaa garlaa");
-    }
-  };
+  // const getTransactions = async () => {
+  //   console.log("working");
+  //   try {
+  //     const {
+  //       data: { transactions },
+  //     } = await myAxios.get("/transactions/" + user.id);
+  //     toast.success("Гүйлгээнүүдийг амжилттай татлаа.");
+  //     setTransactions(transactions);
+  //   } catch (error) {
+  //     toast.error("TTT guilgee nemhed aldaa garlaa");
+  //   }
+  // };
 
   useEffect(() => {
     console.log("ter");
-    getTransactions();
+    // getTransactions();
   }, [reFetch]);
 
   return (

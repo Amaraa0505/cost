@@ -89,10 +89,10 @@ const FormLeft = ({ closeForm }) => {
             type="datetime-local"
             placeholder="oct 30, 2023"
             className="bg-slate-100 p-2 rounded-xl"
-            name="updatedat"
+            name="updatedAt"
             onChange={(e) => {
               changeTransactionData(e.target.name, e.target.value);
-              console.log("DAte", transactionData.updatedat);
+              console.log("DAte", transactionData.updatedAt);
             }}
           />
         </div>
