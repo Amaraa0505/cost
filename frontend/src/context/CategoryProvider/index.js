@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
-import myAxios from "@/utils/axios";
+import myAxios from "../../utils/axios";
 
 export const CategoryContext = createContext(null);
 
