@@ -38,7 +38,7 @@ export const Cards1 = () => {
   }, []);
   return (
     <div className="w-full grid grid-cols-2 my-10 gap-9">
-      <BarChart barChartData={barChartData} />
+      <BarChart barChartData={barChartData} className="rounded-xl" />
       <DoughnurChart categoryData={categoryData} />
     </div>
   );

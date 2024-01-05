@@ -5,7 +5,7 @@ const upload = async (req, res) => {
 
   await sql`
     UPDATE users SET avatar_img=${req.file.path} WHERE id=${userId}`;
-  res.status(201), json({ message: "success", imageUrl: req.file.path });
+  res.status(201).json({ message: "success", imageUrl: req.file.path });
 };
 
 module.exports = { upload };

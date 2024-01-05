@@ -3,7 +3,7 @@ import { getIcons } from "../../utils";
 
 const RecordIcons = ({ category, changeTransactionData }) => {
   return (
-    <div className="position: absolute bg-white w-[45%]">
+    <div className="absolute bg-white w-[45%]">
       {category.map((el) => (
         <button
           className="w-full font-normal mb-4 flex items-center gap-3 hover:opacity-50"

@@ -24,6 +24,7 @@ const Cards = ({ totalIncome }) => {
       <div className="flex gap-5">
         <div className="bg-blue-600 rounded-xl w-96 h-52 p-8 ">
           <p className="text-white font-semibold">Geld</p>
+          <p className="text-white text-xl mt-16">Transaction</p>
         </div>
 
         <div className="bg-white rounded-xl w-96 h-52 p-4">

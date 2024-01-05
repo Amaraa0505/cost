@@ -21,7 +21,12 @@ const Header = () => {
         </button>
       </div>
       {/* <button onClick={() => router.push("/signup")}>signup</button> */}
-      <button className="bg-blue-600 rounded-full p-3 text-white ml-[880px]">
+      <img
+        src="me.jpg"
+        className="rounded-full w-12 h-12 border-slate-400 border-2 ml-[800px]"
+        onClick={() => router.push("./profile")}
+      ></img>
+      <button className="bg-blue-600 rounded-full p-3 text-white ">
         + Record
       </button>
     </div>

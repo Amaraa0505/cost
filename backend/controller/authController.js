@@ -7,13 +7,14 @@ const signup = async (req, res) => {
     const findUser = await sql`
         SELECT email FROM users WHERE email=${email}`;
     if (findUser.length > 0) {
+      ////
       return res.status(400).json({ message: "User email is already exist" });
     }
     const hashedPassword = bcrypt.hashSync(password, 10);
     const data = await sql`
     INSERT INTO users(email, name, password) VALUES (${email}, ${name}, ${hashedPassword}) RETURNING id`;
     console.log(data, "end");
-    const { id } = data[0];
+    const { id } = data[0]; ///
     res.status(201).json({ message: "success", user: { id } });
   } catch (error) {
     res.status(500).json({ message: "failed" });
@@ -30,7 +31,7 @@ const signin = async (req, res) => {
       return res.status(400).json({ message: "user not found" });
     }
 
-    const isCheck = bcrypt.compareSync(userPassword, findUser[0].password);
+    const isCheck = bcrypt.compareSync(userPassword, findUser[0].password); ///
     if (!isCheck) {
       res.status(400).json({ message: "wrong username or password" });
     }
