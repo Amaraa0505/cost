@@ -16,8 +16,8 @@ import myAxios from "@/utils/axios";
 Chart.register(CategoryScale, LinearScale, BarElement, ArcElement, Legend);
 
 export const Cards1 = () => {
-  const [barChartData, setBarChartData] = useState(null);
-  const [categoryData, setCategoryData] = useState(null);
+  const [barChartData, setBarChartData] = useState(null); ////why null
+  const [categoryData, setCategoryData] = useState(null); ///why nul
 
   const getChartData = async () => {
     try {
@@ -34,7 +34,7 @@ export const Cards1 = () => {
 
   useEffect(() => {
     console.log("E2");
-    getChartData();
+    getChartData(); ///why is positioned here
   }, []);
   return (
     <div className="w-full grid grid-cols-2 my-10 gap-9">

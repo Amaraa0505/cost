@@ -35,7 +35,7 @@ const signin = async (req, res) => {
     if (!isCheck) {
       res.status(400).json({ message: "wrong username or password" });
     }
-    const { password, ...user } = findUser[0];
+    const { password, ...user } = findUser[0]; ///daraalal
 
     res.status(201).json({ message: "success", user });
   } catch (error) {

@@ -31,7 +31,7 @@ const signup = () => {
           />
           <input
             type="text"
-            name="email"
+            name="email" ///role of name
             onChange={(e) => {
               changeFormUserData(e.target.name, e.target.value);
             }}
@@ -61,7 +61,7 @@ const signup = () => {
           />
           <button
             onClick={signup}
-            disabled={loading}
+            disabled={loading} ///
             className="bg-blue-600 rounded-xl p-2 w-72"
           >
             Sign Up

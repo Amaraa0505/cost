@@ -8,7 +8,7 @@ const Cards = ({ totalIncome }) => {
 
   const getTotalIncExp = async () => {
     const {
-      data: { totalIncome, totalExpense },
+      data: { totalIncome, totalExpense }, ////
     } = await myAxios.get("/transactions/total");
     console.log("EP", totalExpense, totalIncome);
     setTotals({ ...totals, totalIncome });
@@ -17,7 +17,7 @@ const Cards = ({ totalIncome }) => {
 
   useEffect(() => {
     getTotalIncExp();
-  }, []);
+  }, []); ///
 
   return (
     <div className="flex flex-col gap-5 items-center p-8">
@@ -31,7 +31,7 @@ const Cards = ({ totalIncome }) => {
           <h1 className="font-semibold mb-1">Your Income</h1>
           <div className="bg-gray-400 rouded-full w-full h-[1.5px]"></div>
           <div className="flex flex-col gap-4">
-            {totals.totalIncome && (
+            {totals.totalIncome && ( //
               <span className="font-bold lg:text-4xl md:text-2xl text-xl text-green-500">
                 {totals.totalIncome}₮
               </span>

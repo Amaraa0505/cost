@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import myAxios from "../../utils/axios";
 
-export const CategoryContext = createContext(null);
+export const CategoryContext = createContext(null); //////why context is created
 
 const CategoryProvider = ({ children }) => {
   const [categoryData, setCategoryData] = useState({
@@ -42,7 +42,7 @@ const CategoryProvider = ({ children }) => {
         userId: user.id,
       });
 
-      setReFetch(!reFetch);
+      setReFetch(!reFetch); /// refetch uureg
       toast.success("Ангилал амжилттай нэмлээ.");
     } catch (error) {
       toast.error("Ангилал нэмэхэд алдаа гарлаа.");
@@ -53,16 +53,17 @@ const CategoryProvider = ({ children }) => {
     console.log("WORKING");
     try {
       const {
-        data: { categories },
+        data: { categories }, /////
       } = await myAxios.get("/categories");
 
-      setCategories(categories);
+      setCategories(categories); /////
     } catch (error) {
       console.log("TER", error);
     }
   };
 
   useEffect(() => {
+    /////
     getCategories();
   }, [reFetch]);
 

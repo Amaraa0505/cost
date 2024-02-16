@@ -8,6 +8,7 @@ const StepOne = () => {
   const { step, changeStep, goToDashboard } = useContext(StepContext);
 
   const StepSwitch = () => {
+    ///down
     switch (step) {
       case 1:
         return (

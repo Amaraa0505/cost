@@ -24,6 +24,7 @@ export const getCurrencySymbol = (name = "MNT") => {
 };
 
 export const thousandify = (num) => {
+  ///
   console.log(num);
   return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
 };

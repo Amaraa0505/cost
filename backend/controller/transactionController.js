@@ -3,9 +3,9 @@ const { sql } = require("../config/pgDb");
 const getAllTransaction = async (req, res) => {
   const { user_id } = req.params;
   try {
-    const transactions = await sql`
+    const transactions = await sql`  /// ymar uyd await
       SELECT tr.name, tr.amount, tr.createdAt, tr.id, tr.transaction_type, ct.name, ct.color FROM transaction tr 
-      INNER JOIN category ct ON tr.category_id=ct.id WHERE tr.user_id=${user_id} ORDER BY createdAt DESC`;
+      INNER JOIN category ct ON tr.category_id=ct.id WHERE tr.user_id=${user_id} ORDER BY createdAt DESC`; /// role of inner join
     res.status(201).json({ message: "success", transactions });
   } catch (error) {
     console.log("ERR", error);
@@ -20,7 +20,7 @@ const createTransaction = async (req, res) => {
       req.body;
 
     const data = await sql`
-        INSERT INTO transaction(user_id, category_id, name, amount,  transaction_type, updatedAt) VALUES(${user_id}, ${category_id}, ${name}, ${amount}, ${transaction_type}, ${updatedAt}) RETURNING *`;
+        INSERT INTO transaction(user_id, category_id, name, amount,  transaction_type, updatedAt) VALUES(${user_id}, ${category_id}, ${name}, ${amount}, ${transaction_type}, ${updatedAt}) RETURNING *`; // why id is teturning
     res.status(201).json({ message: "success", transaction: data[0] });
   } catch (error) {
     console.log("ERR", error);
@@ -31,9 +31,9 @@ const createTransaction = async (req, res) => {
 const getBarGraphData = async (req, res) => {
   try {
     const { user_id } = req.params;
-    const barGraphData = await sql`
+    const barGraphData = await sql` 
       SELECT
-        EXTRACT(YEAR FROM updatedAt) AS year,
+        EXTRACT(YEAR FROM updatedAt) AS year,  
         EXTRACT(MONTH FROM updatedAt) AS month,
         transaction_type,
         SUM(amount) AS total_amount

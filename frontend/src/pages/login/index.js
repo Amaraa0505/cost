@@ -24,7 +24,7 @@ const login = () => {
             type="text"
             name="email"
             onChange={(e) => {
-              changeFormUserData(e.target.name, e.target.value);
+              changeFormUserData(e.target.name, e.target.value); ///role of e and target
             }}
             value={formUserData.email}
             placeholder="Email"

@@ -14,6 +14,7 @@ const FormLeft = ({ closeForm }) => {
     useContext(TransactionContext);
 
   const addRecord = async () => {
+    /// function
     await addTransaction();
     closeForm();
   };
@@ -22,7 +23,7 @@ const FormLeft = ({ closeForm }) => {
     const {
       data: { categories },
     } = await axios.get("http://localhost:8008/categories");
-    setCategory(categories);
+    setCategory(categories); ////()
   };
 
   // const [colored, setColored] = useState(<MdHomeFilled size={30} />);
@@ -38,11 +39,11 @@ const FormLeft = ({ closeForm }) => {
       <div className="rounded-full flex gap-5 ">
         <button
           className={`flex-1 btn=md rounded-3xl border-none ${
-            transactionData.transaction_type == "EXP" &&
+            transactionData.transaction_type == "EXP" && ///where transaction_type is come
             "bg-[#0166FF] text-white"
           }`}
           onClick={() => {
-            changeTransactionData("transaction_type", "EXP");
+            changeTransactionData("transaction_type", "EXP"); /// ()?
           }}
         >
           Expense

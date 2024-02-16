@@ -33,7 +33,7 @@ const TransactionProvider = ({ children }) => {
         user_id: user.id,
       });
       console.log("FF");
-      setReFetch(!reFetch);
+      setReFetch(!reFetch); ///
       toast.success("Гүйлгээг амжилттай нэмлээ.");
     } catch (error) {
       toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");

@@ -15,7 +15,7 @@ const userSchema = Yup.object().shape({
 
 const UserProvider = ({ children }) => {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); ///why null
   const [loading, setLoading] = useState(false);
 
   const [formUserData, setLoginUserData] = useState({
@@ -47,7 +47,8 @@ const UserProvider = ({ children }) => {
     try {
       setLoading(true);
       const { data } = await myAxios.post("/auth/signin", {
-        userEmail: formUserData.email,
+        /// why path
+        userEmail: formUserData.email, //where userEmail, userPassword is used
         userPassword: formUserData.password,
       });
       console.log("DDD++++++>", data.user);
@@ -55,7 +56,7 @@ const UserProvider = ({ children }) => {
       router.push("/");
     } catch (error) {
       console.log("error", error);
-      toast.error(`${error.response.data.message}`, { autoClose: 3000 });
+      toast.error(`${error.response.data.message}`, { autoClose: 3000 }); ///
     } finally {
       setLoading(false);
     }
@@ -68,7 +69,7 @@ const UserProvider = ({ children }) => {
   const signup = async () => {
     // validation
     try {
-      const res = await userSchema.validate(formUserData);
+      const res = await userSchema.validate(formUserData); ///
       console.log("VALIDATION", res);
     } catch (error) {
       console.log("VALID ERRORS", error.errors);
@@ -95,6 +96,7 @@ const UserProvider = ({ children }) => {
 
     try {
       const { data } = await myAxios.post("/auth/signup", {
+        ///itt
         email: formUserData.email,
         password: formUserData.password,
         name: formUserData.name,

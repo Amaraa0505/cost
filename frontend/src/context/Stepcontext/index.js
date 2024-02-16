@@ -3,22 +3,23 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { UserContext } from "../UserProvider";
 import { useRouter } from "next/router";
-import myAxios from "../../utils/axios";
+import myAxios from "../../utils/axios"; ///
 
 const { createContext, useState, useEffect, useContext } = require("react");
 
 export const StepContext = createContext("light");
+
 export const StepProvider = ({ children }) => {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1); //// 1, [], {}, (), ("")
   const [stepData, setStepData] = useState({
     currency_type: "",
     balance: 10,
   });
 
   const changeStep = () => {
-    setStep((prevStep) => prevStep + 1);
+    setStep((prevStep) => prevStep + 1); ///what is prevStep
   };
 
   const changeStepData = (key, value) => {
@@ -28,6 +29,7 @@ export const StepProvider = ({ children }) => {
   const goToDashboard = async () => {
     try {
       const { data } = await myAxios.put("/users/" + user.id, {
+        /////
         currency_type: stepData.currency_type,
         balance: stepData.balance,
       });
